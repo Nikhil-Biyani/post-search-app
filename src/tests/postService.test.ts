@@ -9,7 +9,7 @@ describe('Post Service', () => {
     it('should filter posts based on search query', () => {
         const result = searchPostsService({ query: 'Dynamic' });
         expect(result.totalCount).toBe(8);
-        expect(result.results[0].name).toBe('Dynamic Infrastructure Designer, Dynamic Identity Specialist, Dynamic Metrics Designer, Dynamic Marketing Consultant, Dynamic Security Director, Dynamic Interactions Supervisor, Dynamic Division Strategist, Dynamic Marketing Orchestrator');
+        expect(result.results[0].name).toBe('Dynamic Infrastructure Designer');
     });
 
     it('should filter posts based on exact match search query', () => {

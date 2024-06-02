@@ -11,7 +11,7 @@ describe('Post Controller', () => {
     it('should filter posts based on search query', async () => {
         const response = await request(app).get('/posts?query=Dynamic');
         expect(response.status).toBe(200);
-        expect(response.body.results[0].name).toBe('Dynamic Infrastructure Designer, Dynamic Identity Specialist, Dynamic Metrics Designer, Dynamic Marketing Consultant, Dynamic Security Director, Dynamic Interactions Supervisor, Dynamic Division Strategist, Dynamic Marketing Orchestrator');
+        expect(response.body.results[0].name).toBe('Dynamic Infrastructure Designer');
     });
 
     it('should filter posts based on exact match search query', async () => {
