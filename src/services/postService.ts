@@ -11,7 +11,7 @@ interface SearchParams {
     pageSize?: number;
 }
 
-export const searchPostService = ({query, sortBy, page, pageSize}: SearchParams) => {
+export const searchPostsService = ({query, sortBy, page, pageSize}: SearchParams) => {
     let results = mockData;
 
     if (!query && !sortBy && !page && !pageSize) {

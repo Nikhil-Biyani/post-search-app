@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { searchPostService } from "../services/postService";
+import { searchPostsService } from "../services/postService";
 
 export const getPosts = (req: Request, res: Response) => {
     const {query, sortBy, page, pageSize} = req.query;    
@@ -10,6 +10,6 @@ export const getPosts = (req: Request, res: Response) => {
         pageSize: pageSize ? parseInt(pageSize as string, 10) : undefined,
     }
 
-    const result = searchPostService(searchParams);
+    const result = searchPostsService(searchParams);
     return res.json(result);
 };
