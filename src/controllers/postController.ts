@@ -7,7 +7,7 @@ export const getPosts = (req: Request, res: Response) => {
         query: query as string,
         sort: sortBy as 'name' | 'dateLastEdited',
         page: page ? parseInt(page as string, 10) : undefined,
-        pageSize: pageSize ? parseInt(pageSize as string,) : undefined,
+        pageSize: pageSize ? parseInt(pageSize as string, 10) : undefined,
     }
 
     const result = searchPostService(searchParams);

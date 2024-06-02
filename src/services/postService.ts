@@ -12,17 +12,28 @@ interface SearchParams {
 }
 
 // To ensure that the pagination functionality works even if the client doesn't provide these values. This means that by default, the first page with 10 posts will be returned if the client does not specify any pagination parameters.
-export const searchPostService = ({query = '', sortBy = 'name', page = 1, pageSize = 10}: SearchParams) => {
+export const searchPostService = ({query, sortBy, page, pageSize}: SearchParams) => {
     let results = mockData;
+
+    if (!query && !sortBy && !page && !pageSize) {
+        return { totalCount: results.length, results };
+    }
+
     if(query) {
         results = searchPosts(results, query);
     }
 
-    results = sortPosts(results, sortBy);
+    if(sortBy) {
+        results = sortPosts(results, sortBy);
+    }
 
     const totalCount = results.length;
-    const {posts: paginatedResults} = paginatePosts(results, page, pageSize);
 
-    return {totalCount, results: paginatedResults};
+    if (page && pageSize) {
+        const { posts: paginatedResults } = paginatePosts(results, page, pageSize);
+        return { totalCount, results: paginatedResults };
+    }
+
+    return { totalCount, results };
 }
 
