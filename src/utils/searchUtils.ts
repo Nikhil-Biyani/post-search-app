@@ -1,4 +1,3 @@
-import e from "express";
 import { Post } from "../models/post";
 
 export function searchPosts(posts: Post[], query: string): Post[] {
@@ -17,13 +16,14 @@ export function searchPosts(posts: Post[], query: string): Post[] {
     });
 }
 
-export function sortPosts(posts: Post[], sortBy: 'name' | 'dateLastEdited'): Post[] {
+export function sortPosts(posts: Post[], sortBy: string): Post[] {
     return posts.sort((a, b) => {
         if(sortBy === 'name') {
             return a.name.localeCompare(b.name);
-        } else {
+        } else if(sortBy === 'dateLastEdited'){
             return new Date(b.dateLastEdited).getTime() - new Date(a.dateLastEdited).getTime();
         }
+        return 0;
     });
 }
 

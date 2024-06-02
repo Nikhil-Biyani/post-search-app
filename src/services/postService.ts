@@ -6,12 +6,11 @@ const mockData: Post[] = JSON.parse(fs.readFileSync('src/mock_data.json', "utf8"
 
 interface SearchParams {
     query?: string;
-    sortBy?: 'name' | 'dateLastEdited';
+    sortBy?: string;
     page?: number;
     pageSize?: number;
 }
 
-// To ensure that the pagination functionality works even if the client doesn't provide these values. This means that by default, the first page with 10 posts will be returned if the client does not specify any pagination parameters.
 export const searchPostService = ({query, sortBy, page, pageSize}: SearchParams) => {
     let results = mockData;
 
